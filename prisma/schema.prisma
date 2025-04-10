@@ -1,0 +1,116 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// User model for authentication
+model User {
+  id            String    @id @default(cuid())
+  name          String
+  email         String    @unique
+  phone         String
+  password      String    // Hashed password
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  forms         Form[]    // Relation to forms created by user
+}
+
+// Form model for the overall form entity
+model Form {
+  id              String        @id @default(cuid())
+  title           String
+  description     String?
+  isPublished     Boolean       @default(false)
+  slug            String        @unique // For sharing via URL
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+  creator         User          @relation(fields: [creatorId], references: [id], onDelete: Cascade)
+  creatorId       String
+  formElements    FormElement[]
+  submissions     Submission[]
+  theme           Theme?        @relation(fields: [themeId], references: [id])
+  themeId         String?
+  settings        Settings?     @relation(fields: [settingsId], references: [id])
+  settingsId      String?
+  embedCode       String?       // Generated embed code
+  visits          Int           @default(0) // Analytics
+  completionRate  Float?        // Analytics
+}
+
+// FormElement model for individual form inputs
+model FormElement {
+  id            String    @id @default(cuid())
+  form          Form      @relation(fields: [formId], references: [id], onDelete: Cascade)
+  formId        String
+  type          String    // text, email, checkbox, select, etc.
+  label         String
+  placeholder   String?
+  helpText      String?
+  required      Boolean   @default(false)
+  order         Int       // Position in the form
+  options       Json?     // For elements like select, radio buttons
+  validations   Json?     // Custom validations
+  styles        Json?     // Custom styles
+}
+
+// Theme model for form appearance
+model Theme {
+  id              String    @id @default(cuid())
+  name            String
+  primaryColor    String    @default("#3B82F6") // Default blue color
+  secondaryColor  String?
+  backgroundColor String?
+  fontFamily      String?
+  borderRadius    String?
+  forms           Form[]
+}
+
+// Settings model for form functionality settings
+model Settings {
+  id                  String    @id @default(cuid())
+  redirectUrl         String?   // URL to redirect to after submission
+  submitButtonText    String    @default("Submit")
+  successMessage      String    @default("Form submitted successfully")
+  notificationEmail   String?   // Email to send notifications to
+  allowFileUploads    Boolean   @default(false)
+  captchaEnabled      Boolean   @default(false)
+  limitSubmissions    Boolean   @default(false)
+  maxSubmissions      Int?      // If limitSubmissions is true
+  forms               Form[]
+}
+
+// Submission model for form submissions
+model Submission {
+  id            String    @id @default(cuid())
+  form          Form      @relation(fields: [formId], references: [id], onDelete: Cascade)
+  formId        String
+  data          Json      // Form submission data
+  createdAt     DateTime  @default(now())
+  ipAddress     String?
+  userAgent     String?
+  viewed        Boolean   @default(false)
+}
+
+// Template model for pre-built form templates
+model Template {
+  id          String    @id @default(cuid())
+  name        String
+  description String?
+  category    String?   // e.g., "Contact", "Survey", "Application"
+  elements    Json      // Pre-defined form elements
+  themeId     String?
+  settingsId  String?
+  thumbnail   String?   // URL to template thumbnail image
+}
+

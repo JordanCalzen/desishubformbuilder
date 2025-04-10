@@ -13,7 +13,7 @@ export default function Header() {
 				<div className=" flex h-16 items-center justify-between">
 					<Link
 						href="/"
-						className=" w-[250px] lg:w-[200px] flex items-center gap-2 p-3"
+						className=" w-[150px] lg:w-[200px] flex items-center gap-2 p-3"
 					>
 						<Image
 							src="/desishublogo.png"

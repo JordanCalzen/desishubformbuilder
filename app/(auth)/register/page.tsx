@@ -1,10 +1,10 @@
-import LoginForm from "@/components/users/login";
+import RegisterForm from "@/components/users/RegisterForm";
 import React from "react";
 
 export default function page() {
 	return (
 		<div>
-			<LoginForm />
+			<RegisterForm />
 		</div>
 	);
 }

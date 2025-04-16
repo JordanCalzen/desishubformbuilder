@@ -1,144 +1,161 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Instagram, Linkedin, Twitter, Youtube } from "lucide-react";
+import {
+	Facebook,
+	Instagram,
+	Linkedin,
+	MapPin,
+	Phone,
+	Twitter,
+	X,
+	Youtube,
+} from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
-export default function FooterV2() {
+export default function Footer() {
 	return (
-		<footer className="w-full  text-white">
-			<div className="container px-4 py-16 md:px-6">
-				<div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+		<footer className="w-full border-t bg-white py-12 md:py-16 lg:py-20">
+			<div className="container px-4 md:px-6">
+				<div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
 					<div className="space-y-4">
-						<div className="flex items-center space-x-2">
-							<svg
-								className=" h-8 w-8"
-								fill="none"
-								height="24"
-								stroke="currentColor"
-								strokeLinecap="round"
-								strokeLinejoin="round"
-								strokeWidth="2"
-								viewBox="0 0 24 24"
-								width="24"
-								xmlns="http://www.w3.org/2000/svg"
-							>
-								<path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
-								<polyline points="14 2 14 8 20 8" />
-							</svg>
-							<span className="text-xl font-bold">FormBuilder</span>
-						</div>
-						<p className="text-sm text-white/90">
-							Trusted in more than 100 countries & 5 million customers. Have any
-							query? contact us we are here for you.
+						<Image
+							src="/logo_totalenergies.png"
+							alt="TotalEnergies Uganda Logo"
+							width={180}
+							height={40}
+							className="h-10 w-auto"
+						/>
+						<p className="text-sm text-gray-500">
+							Powering progress with cleaner, smarter energy solutions in
+							Uganda.
 						</p>
-						<div className="flex space-x-4">
-							<Link
-								href="#"
-								className="rounded-full bg-white p-2 hover:bg-white/90"
-							>
-								<Twitter className="h-4 w-4 text-[#6366F1]" />
+						<div className="flex gap-4">
+							<Link href="#" className="text-gray-500 hover:text-gray-900">
+								<Facebook className="h-5 w-5" />
+								<span className="sr-only">Facebook</span>
+							</Link>
+							<Link href="#" className="text-gray-500 hover:text-gray-900">
+								<Twitter className="h-5 w-5" />
 								<span className="sr-only">Twitter</span>
 							</Link>
-							<Link
-								href="#"
-								className="rounded-full bg-white p-2 hover:bg-white/90"
-							>
-								<Instagram className="h-4 w-4 text-[#6366F1]" />
+							<Link href="#" className="text-gray-500 hover:text-gray-900">
+								<Instagram className="h-5 w-5" />
 								<span className="sr-only">Instagram</span>
 							</Link>
-							<Link
-								href="#"
-								className="rounded-full bg-white p-2 hover:bg-white/90"
-							>
-								<Linkedin className="h-4 w-4 text-[#6366F1]" />
+							<Link href="#" className="text-gray-500 hover:text-gray-900">
+								<Linkedin className="h-5 w-5" />
 								<span className="sr-only">LinkedIn</span>
 							</Link>
-							<Link
-								href="#"
-								className="rounded-full bg-white p-2 hover:bg-white/90"
-							>
-								<Youtube className="h-4 w-4 text-[#6366F1]" />
-								<span className="sr-only">YouTube</span>
-							</Link>
 						</div>
 					</div>
 					<div className="space-y-4">
-						<h3 className="text-lg font-bold">Get In Touch</h3>
-						<div className="space-y-2 text-sm">
-							<p>support@formbuilder.com</p>
-							<p>+256 745 658 325</p>
-							<p>kireka, Opp police, Kampala, Uganda.</p>
-						</div>
+						<h3 className="text-lg font-medium">Solutions</h3>
+						<ul className="space-y-2 text-sm">
+							<li>
+								<Link href="#" className="text-gray-500 hover:text-gray-900">
+									Solar Energy
+								</Link>
+							</li>
+							<li>
+								<Link href="#" className="text-gray-500 hover:text-gray-900">
+									Clean Fuels
+								</Link>
+							</li>
+							<li>
+								<Link href="#" className="text-gray-500 hover:text-gray-900">
+									Hybrid Solutions
+								</Link>
+							</li>
+							<li>
+								<Link href="#" className="text-gray-500 hover:text-gray-900">
+									Commercial Solutions
+								</Link>
+							</li>
+							<li>
+								<Link href="#" className="text-gray-500 hover:text-gray-900">
+									Rural Electrification
+								</Link>
+							</li>
+						</ul>
 					</div>
-					<div className="grid grid-cols-2 gap-4 sm:grid-cols-2">
-						<div className="space-y-4">
-							<h3 className="text-lg font-bold">Quick Links</h3>
-							<nav className="flex flex-col space-y-2 text-sm">
-								<Link className="hover:underline" href="#">
-									Home
+					<div className="space-y-4">
+						<h3 className="text-lg font-medium">Company</h3>
+						<ul className="space-y-2 text-sm">
+							<li>
+								<Link href="#" className="text-gray-500 hover:text-gray-900">
+									About Us
 								</Link>
-								<Link className="hover:underline" href="#">
-									FAQs
+							</li>
+							<li>
+								<Link href="#" className="text-gray-500 hover:text-gray-900">
+									Sustainability
 								</Link>
-								<Link className="hover:underline" href="#">
-									Price Plan
-								</Link>
-								<Link className="hover:underline" href="#">
-									Features
-								</Link>
-							</nav>
-						</div>
-						<div className="space-y-4">
-							<h3 className="text-lg font-bold invisible">Links</h3>
-							<nav className="flex flex-col space-y-2 text-sm">
-								<Link className="hover:underline" href="#">
+							</li>
+							<li>
+								<Link href="#" className="text-gray-500 hover:text-gray-900">
 									Careers
 								</Link>
-								<Link className="hover:underline" href="#">
-									About
+							</li>
+							<li>
+								<Link href="#" className="text-gray-500 hover:text-gray-900">
+									News & Blog
 								</Link>
-								<Link className="hover:underline" href="#">
+							</li>
+							<li>
+								<Link href="#" className="text-gray-500 hover:text-gray-900">
 									Contact
 								</Link>
-								<Link className="hover:underline" href="#">
-									Products
-								</Link>
-							</nav>
-						</div>
+							</li>
+						</ul>
 					</div>
 					<div className="space-y-4">
-						<h3 className="text-lg font-bold">Newsletter</h3>
-						<form className="space-y-2">
-							<Input
-								className="bg-white/10 border-white/20 placeholder:text-white/50"
-								placeholder="Enter email.."
-								type="email"
-							/>
-							<Button
-								className="w-full bg-white text-[#6366F1] hover:bg-white/90"
-								type="submit"
-							>
-								Subscribe
-								<svg
-									className="ml-2 h-4 w-4"
-									fill="none"
-									stroke="currentColor"
-									strokeLinecap="round"
-									strokeLinejoin="round"
-									strokeWidth="2"
-									viewBox="0 0 24 24"
-								>
-									<path d="M5 12h14M12 5l7 7-7 7" />
-								</svg>
-							</Button>
-						</form>
+						<h3 className="text-lg font-medium">Contact Us</h3>
+						<ul className="space-y-2 text-sm">
+							<li className="flex items-start gap-2">
+								<MapPin className="h-5 w-5 text-red-600 mt-0.5" />
+								<span className="text-gray-500">
+									Plot 4, Seventh Street, Industrial Area, Kampala, Uganda
+								</span>
+							</li>
+							<li className="flex items-center gap-2">
+								<Phone className="h-5 w-5 text-red-600" />
+
+								<span className="text-gray-500">+256 414 425 000</span>
+							</li>
+							<li className="flex items-center gap-2">
+								<X className="h-5 w-5 text-red-600" />
+								<span className="text-gray-500">
+									info.uganda@totalenergies.com
+								</span>
+							</li>
+						</ul>
 					</div>
 				</div>
-			</div>
-			<div className="border-t border-white/10">
-				<div className="container flex flex-col items-center justify-center gap-4 py-6 text-center text-sm md:h-16 md:flex-row md:py-0">
-					<div className="text-white/60">
-						Copyright@2023 All Right Reserved Pagedone.
+				<div className="mt-8 border-t pt-8 flex flex-col md:flex-row justify-between items-center">
+					<p className="text-xs text-gray-500">
+						&copy; {new Date().getFullYear()} TotalEnergies Uganda. All rights
+						reserved.
+					</p>
+					<div className="flex gap-4 mt-4 md:mt-0">
+						<Link
+							href="#"
+							className="text-xs text-gray-500 hover:text-gray-900"
+						>
+							Privacy Policy
+						</Link>
+						<Link
+							href="#"
+							className="text-xs text-gray-500 hover:text-gray-900"
+						>
+							Terms of Service
+						</Link>
+						<Link
+							href="#"
+							className="text-xs text-gray-500 hover:text-gray-900"
+						>
+							Cookie Policy
+						</Link>
 					</div>
 				</div>
 			</div>
